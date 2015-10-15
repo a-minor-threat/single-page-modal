@@ -1,0 +1,81 @@
+<html lang="en">
+    <head>
+        <title>Modal Example</title>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link
+            href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+            rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <style type="text/css">
+            .modal-dialog {
+                width: 800px;
+            }
+            
+            .modal-header .close {
+                font-size: 40px; //bigger
+            }
+        </style>
+
+</head>
+<body>
+        <script>
+            $(document).ready(function () {
+
+                $(document).mousemove(function (e) {
+                    if (e.pageY <= 1) {
+                        if ($.cookie('shown')==undefined) {
+
+                            $('#myModal').modal('show');
+                            $.cookie('shown','1');
+                            console.log("setting shown cookie after modal displays once");
+
+                        }                        
+                          else if ($.cookie('shown')==1){
+                             $('#myModal').modal('hide');
+                             console.log("not showing modal because shown cookie is there");
+                        }
+
+                    }
+                });
+            });
+        </script>
+        <p>This is the exit page.</p>
+<a href="index.html">This is a test link</a>
+
+
+<div class="container">
+
+    <!-- Modal -->
+    <div class="modal fade" data-backdrop="static" id="myModal" role="dialog"
+        tabindex="-1">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4 class="modal-title">Please Give Us Feedback!</h4>
+                </div>
+                <!-- End of modal header -->
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <iframe frameborder="0" height="640" id="feedbackSurvey"
+                    src="http://www.bing.com" width="770"></iframe>
+                </div>
+                <!-- end of Modal body -->
+                <!-- Modal footer-->
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                </div>
+                <!-- end of Modal footer -->
+            </div> <!--- end of Modal content -->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
